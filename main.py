@@ -15,10 +15,13 @@ args = parser.parse_args()
 
 
 
+repo = Path(__file__).parent
+import os
+os.chdir(repo)
 
-if not Path('./init.hoc').exists():
-    number = 123897
-    model_url = f"https://senselab.med.yale.edu/modeldb/eavBinDown?o={number}&a=23&mime=application/zip"
+if not Path('init.hoc').exists():
+    ascension_number = 123897
+    model_url = f"https://senselab.med.yale.edu/modeldb/eavBinDown?o={ascension_number}&a=23&mime=application/zip"
     print(f'Downloading:', model_url)
     import requests
     myfile = requests.get(model_url)
