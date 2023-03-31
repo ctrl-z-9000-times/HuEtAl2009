@@ -16,13 +16,30 @@ args = parser.parse_args()
 
 
 
-
-if not Path('./init.hoc'):
-    model_url = "https://senselab.med.yale.edu/modeldb/eavBinDown?o=123897&a=23&mime=application/zip"
-    print(f'Downloading: "{model_url}"')
+if not Path('./init.hoc').exists():
+    number = 123897
+    model_url = f"https://senselab.med.yale.edu/modeldb/eavBinDown?o={number}&a=23&mime=application/zip"
+    print(f'Downloading:', model_url)
     import requests
-    myfile = requests.get(url)
-    open('c:/users/LikeGeeks/downloads/PythonImage.png', 'wb').write(myfile.content)
+    myfile = requests.get(model_url)
+    zip_filename = Path(f'HuEtAl2009.zip')
+    with open(zip_filename, 'wb') as f:
+      f.write(myfile.content)
+    print(f"Unzipping:", zip_filename)
+    import zipfile
+    zipfile.ZipFile(zip_filename).extractall()
+    zip_filename.unlink()
+    # Move the files into place.
+    unzip_dir = Path('./HuEtAl2009/').resolve()
+    for file in unzip_dir.iterdir():
+      file.rename(file.parent.parent / file.name)
+    unzip_dir.rmdir()
+    # Move the mechanisms into a new subdir.
+    mechanism = Path('mechanism')
+    original  = Path('orig')
+    mechanism.rename(original)
+    mechanism.mkdir()
+    original.rename(mechanism / original)
 
 
 
