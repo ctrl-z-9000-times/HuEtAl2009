@@ -5,7 +5,7 @@ https://senselab.med.yale.edu/ModelDB/ShowModel?model=123897
 ### Installation:
 1) `pip install neuron requests numpy matplotlib`
 2) `git clone https://github.com/ctrl-z-9000-times/HuEtAl2009.git`
-3) `py HuEtAl2009/main.py`  
+3) `py HuEtAl2009/main.py -v`  
 
 
 ### Usage:
