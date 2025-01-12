@@ -21,11 +21,11 @@ os.chdir(repo)
 
 if not Path('init.hoc').exists():
     ascension_number = 123897
-    model_url = f"https://senselab.med.yale.edu/modeldb/eavBinDown?o={ascension_number}&a=23&mime=application/zip"
+    model_url = f"https://modeldb.science/download/{ascension_number}"
     print(f'Downloading:', model_url)
     import requests
     myfile = requests.get(model_url)
-    zip_filename = Path(f'HuEtAl2009.zip')
+    zip_filename = Path(f'{ascension_number}.zip')
     with open(zip_filename, 'wb') as f:
       f.write(myfile.content)
     print(f"Unzipping:", zip_filename)

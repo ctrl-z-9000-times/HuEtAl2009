@@ -1,6 +1,6 @@
 Play with the model:  
 **Action Potential initiation and backpropagation in Neocortical L5 Pyramidal Neuron (Hu et al. 2009)**  
-https://senselab.med.yale.edu/ModelDB/ShowModel?model=123897
+https://modeldb.science/123897
 
 ### Installation:
 1) `pip install neuron requests numpy matplotlib`
